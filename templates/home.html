@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        main {
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Weather API Documentation</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Overview</h2>
+            <p>The Weather API provides real-time weather data for any location. Use this API to fetch current weather, forecasts, and historical data.</p>
+        </section>
+        <section>
+            <h2>Base URL</h2>
+            <p><code>https://http://127.0.0.1:5000/v1</code></p>
+        </section>
+        <section>
+            <h2>Endpoints</h2>
+            <h3>1. Current Weather</h3>
+            <p>Get the current weather for a specific location.</p>
+            <p><strong>Endpoint:</strong> <code>/station/date</code></p>
+            <p><strong>Method:</strong> GET</p>
+            <p><strong>Parameters:</strong></p>
+            <ul>
+                <li><code>station</code> (string, required): Your API key.</li>
+                <li><code>date</code> (string, required): Location (city name, zip code, or coordinates).</li>
+            </ul>
+            <p><strong>Example Request:</strong></p>
+            <pre>
+GET https://api.weatherapi.com/v1/station/date?key=YOUR_API_KEY&q=London
+            </pre>
+        </section>
+    </main>
+</body>
+</html>
