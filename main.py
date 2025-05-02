@@ -6,7 +6,7 @@ varibale = "Hello World"
 
 stations = pd.read_csv("data_small/stations.txt", skiprows=17)
 stations['URL'] = stations['STAID'].apply(
-    lambda x: f'<a target="_blank" href="/api/v1/{x}/1988-10-25">/api/v1/{x}/1988-10-25</a>'
+    lambda x: f'<a target="_blank" href="/api/v1/{x}">/api/v1/{x}</a>'
 )
 @app.route("/")
 def home():
@@ -21,6 +21,15 @@ def about(station, date):
         "station": station,
         "date": date,
         "temperature": temperature
+    }
+
+@app.route("/api/v1/<station>")
+def about_station(station):
+    filename = "data_small/TG_STAID"+str(station).zfill(6)+".txt"
+    df = pd.read_csv(filename, skiprows=20, parse_dates=["    DATE"])
+    return {
+        "station": station,
+        "data": df.to_dict(orient="records")
     }
 
 if __name__ == "__main__":
