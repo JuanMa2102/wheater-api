@@ -2,10 +2,15 @@ from flask import Flask, render_template, request
 import pandas as pd
 
 app = Flask("Website")
+varibale = "Hello World"
 
+stations = pd.read_csv("data_small/stations.txt", skiprows=17)
+stations['URL'] = stations['STAID'].apply(
+    lambda x: f'<a target="_blank" href="/api/v1/{x}/1988-10-25">/api/v1/{x}/1988-10-25</a>'
+)
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", data=stations.to_html(escape=False, index=False))
 
 @app.route("/api/v1/<station>/<date>")
 def about(station, date):
